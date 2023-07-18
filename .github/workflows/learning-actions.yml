@@ -1,0 +1,23 @@
+# name of the workflow as it will appear in the Actions tab of the repository
+name: learning-actions
+
+# **What it does**
+# **Why we have it**
+# **Who does it impact**
+
+# Name for workflow runs generated from the workflow. Appears in the list of workflow runs on your repository's Actions tab
+# Uses the 'github' context to display the username of the actor
+run-name: ${{github.actor}} is learning GitHub Actions
+
+# specifies the trigger for this workflow
+on: [push]
+
+# groups together all the jobs that run in the learning-actions workflow
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+  # configures the job to run on the latest version of an Ubuntu linux runner
+  # job will execute on a fresh VM hosted by GitHub
+    steps:
+      - run: echo Hello World
