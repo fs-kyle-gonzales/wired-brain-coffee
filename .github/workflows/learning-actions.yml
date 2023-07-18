@@ -9,15 +9,21 @@ name: learning-actions
 # Uses the 'github' context to display the username of the actor
 run-name: ${{github.actor}} is learning GitHub Actions
 
-# specifies the trigger for this workflow
-on: [push]
+# (events) specifies the trigger for this workflow
+on: [ push, pull_request ]
 
 # groups together all the jobs that run in the learning-actions workflow
 jobs:
-  build:
+
+  # name of the job
+  say-hello-world:
+  
+    # GitHub hosted runner
+    # job will execute on a fresh VM hosted by GitHub
+    #  configures the job to run on the latest version of an Ubuntu linux runner
     runs-on: ubuntu-latest
   
-  # configures the job to run on the latest version of an Ubuntu linux runner
-  # job will execute on a fresh VM hosted by GitHub
+    # steps - individual task that runs commands or actions; all execute on the same runner 
     steps:
-      - run: echo Hello World
+      - name: Run a hello-world script # name of the command
+        run: echo Hello World
